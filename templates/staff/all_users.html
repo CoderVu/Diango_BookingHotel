@@ -1,0 +1,146 @@
+{% extends 'basic.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager User</title>
+    {% block css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .avatar {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .lock-button, .unlock-button {
+            padding: 5px 10px;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .lock-button {
+            background-color: #ff0000;
+        }
+        .unlock-button {
+            background-color: #00ff00;
+        }
+        .searchForm {
+            margin-bottom: 20px;
+        }
+        
+        .searchForm input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        .searchForm button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .searchForm button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+    {% endblock css %}
+</head>
+{% block body %}
+<body>
+    <form class="searchForm"  action="{% url 'search_users' %}" method="GET">
+        {% csrf_token %}
+        <input type="text" name="search" placeholder="Search user">
+        <button type="submit">Search</button>
+    </form>
+    <div class="container">
+        <h1>Manager User</h1>
+        <table>
+            <thead>
+                <tr>
+                   
+                    <th>Avatar</th>
+                    <th>User name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Is staff</th>
+                    <th>Is Active</th>
+                    <th>Date Joined</th>
+                    <th>Last Login</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usr in users %}
+                <tr>
+                    <td><img class="avatar" src="data:image/png;base64,{{ usr.avatar }}" alt="Avatar"></td>
+                    <td>{{ usr.user.username }}</td>
+                   
+                    <td>{{ usr.user.email }}</td>
+                    <td>{{ usr.sdt }}</td>
+                    <td>{{ usr.address }}</td>
+                    <td>{{ usr.user.is_staff }}</td>
+                    <td>{{ usr.user.is_active }}</td>
+                    <td>{{ usr.user.date_joined }}</td>
+                    <td>{{ usr.user.last_login }}</td>
+                    <td>
+                        {% if usr.user.is_active %}
+                            <form method="POST" action="{% url 'lock_account' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="user_id" value="{{ usr.user.id }}">
+                                <button type="submit" class="lock-button">Khóa Tài Khoản</button>
+                            </form>
+                        {% else %}
+                            <form method="POST" action="{% url 'unlock_account' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="user_id" value="{{ usr.user.id }}">
+                                <button type="submit" class="unlock-button">Unlock Account</button>
+                            </form>
+                        {% endif %}
+                    </td>      
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}
+</html>

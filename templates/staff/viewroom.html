@@ -1,0 +1,125 @@
+{% extends 'basic.html' %}
+
+{% block title %}View Room {% endblock title %}
+
+{% block css %}
+<style>
+    .container {
+        margin-top: 20px;
+        width : 100%;
+    }
+
+    p {
+        margin-bottom: 5px;
+    }
+
+    th {
+        background-color: #f0f0f0;
+    }
+
+    table {
+        margin-top: 20px;
+    }
+
+    .text-success {
+        color: green;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+    }
+
+    .room-details {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .room-details p {
+        margin-bottom: 5px;
+    }
+
+    .room-image {
+        max-width: 200px;
+        max-height: 200px;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<h3 class="text-success">Room Details</h3>
+<hr>
+<div class="container mx-0 room-details">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Number</th> 
+                <th>Type</th>            
+                <th>Image</th>
+                <th>Description</th>
+                <th>Price</th>         
+                <th>Capacity</th> 
+                <th>Size</th> 
+                <th>Status</th>  
+                <th>Location</th>  
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ roomr.roomnumber }}</td>
+                <td>{{ roomr.room_type.type_name }}</td>
+                <td><img src="data:image/jpeg;base64,{{ roomr.image }}" alt="Room Image" class="room-image"></td>
+                <td>{{ roomr.description }}</td>
+                <td>{{ roomr.price }} VNĐ</td>
+                <td>{{ roomr.capacity }} person</td>
+                <td>{{ roomr.size }} ft</td>
+                <td>{{ roomr.get_status_display|capfirst }}</td>
+                <td>{{ roomr.hotel.location|capfirst }}, {{ roomr.hotel.country|capfirst }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+{% if reservations %}
+<div class="container mx-0">
+    <h3 class="text-success">Bookings</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Person</th>
+                <th>Check in</th>
+                <th>Check out</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for each_detail in reservations %}
+            <tr>
+                <td>{{ each_detail.guest.username }}</td>
+                <td>{{ each_detail.room.capacity }}</td>
+                <td>{{ each_detail.check_in }}</td>
+                <td>{{ each_detail.check_out }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><b>Total bookings:</b> {{ reservations|length }}</p>
+</div>
+{% else %}
+<p>No bookings found</p>
+{% endif %}
+{% endblock body %}

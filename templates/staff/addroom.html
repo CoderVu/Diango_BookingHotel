@@ -1,0 +1,150 @@
+{% extends 'basic.html' %}
+{% block title %}Add Room{% endblock title %}
+{% block css %}
+<style>
+    .progress {
+        width: 150px;
+        height: 150px;
+        background: none;
+        position: relative;
+    }
+
+    .progress::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 6px solid #eee;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .progress>span {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+    }
+
+    .progress .progress-left {
+        left: 0;
+    }
+
+    .progress .progress-bar {
+        width: 100%;
+        height: 100%;
+        background: none;
+        border-width: 6px;
+        border-style: solid;
+        position: absolute;
+        top: 0;
+    }
+
+    .progress .progress-left .progress-bar {
+        left: 100%;
+        border-top-right-radius: 80px;
+        border-bottom-right-radius: 80px;
+        border-left: 0;
+        -webkit-transform-origin: center left;
+        transform-origin: center left;
+    }
+
+    .progress .progress-right {
+        right: 0;
+    }
+
+    .progress .progress-right .progress-bar {
+        left: -100%;
+        border-top-left-radius: 80px;
+        border-bottom-left-radius: 80px;
+        border-right: 0;
+        -webkit-transform-origin: center right;
+        transform-origin: center right;
+    }
+
+    .progress .progress-value {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+
+    .rounded-lg {
+        border-radius: 1rem;
+    }
+
+    .text-gray {
+        color: #aaa;
+    }
+
+    div.h4 {
+        line-height: 1rem;
+    }
+</style>
+{% endblock css %}
+{% block body %}
+<h1 class="text-center bg-warning my-0">Add Room</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto">
+            <form action="{% url 'addroom' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="roomtype">Room Type:</label>
+                    <select class="form-control" name="roomtype" id="roomtype">
+                        {% for roomtype in roomtypes %}
+                        <option value="{{ roomtype.id }}">{{ roomtype.type_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">New Image:</label>
+                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="capacity">Capacity:</label>
+                    <input type="number" class="form-control" id="capacity" name="capacity">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="number" class="form-control" id="price" name="price">
+                </div>
+                <div class="form-group">
+                    <label for="size">Size:</label>
+                    <input type="number" class="form-control" id="size" name="size">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select class="form-control" name="status" id="roomstatus">
+                        <option value="1">Available</option>
+                        <option value="2">Not Available</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Room Number:</label>
+                    <input type="number" class="form-control" id="roomnumber" name="roomnumber" >
+                </div>
+                <div class="form-group">
+                    <label for="hotel">Location:</label>
+                    <select class="form-control" name="hotel" id="hotel">
+                        {% for hotel in hotels %}
+                        <option value="{{ hotel.id }}">{{ hotel.location }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Room</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
