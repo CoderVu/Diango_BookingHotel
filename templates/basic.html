@@ -65,7 +65,7 @@
                 {% if user.is_authenticated %}
                       <button class="btn btn-group bg-light" data-toggle="modal" data-target="#forlogin">
                        Hello, {{request.user}}
-                       <a href="{% url 'logout' %}" class="nav-link">
+                       <a href="{% url 'logoutUser' %}" class="nav-link">
                     <button class="btn btn-group bg-warning" data-toggle="modal" data-target="#forlogin">
                         Logout
                     </button></a>&nbsp; &nbsp;

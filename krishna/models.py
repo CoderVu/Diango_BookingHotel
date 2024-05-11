@@ -16,7 +16,7 @@ class RoomType(models.Model):
     description_room_type = models.TextField()
 
     def __str__(self):
-        return self.room_type
+        return self.type_name
     
 class Rooms(models.Model):
     ROOM_STATUS = ( 

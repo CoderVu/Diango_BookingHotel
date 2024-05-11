@@ -1,0 +1,1060 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trang chủ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<style>
+		{% comment %} Modal login {% endcomment %}
+		.modal{
+			background-color:rgba(0,0,0,0.5);
+	  	}
+	  	.input-login{
+		width:90%;
+		margin-left:5%;
+		margin-top:10px;
+	  	}
+	  	.modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top:10%;
+      padding: 5px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      height:500px;
+	  	}
+	  	.formlogin{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		}
+		.divform{
+			width: 50%;
+			height: 100%;
+		}
+		.image-login{
+			width: 50%;
+			height: 100%;
+		}
+		.button-login{
+			width:90%;
+			margin-left:5%;
+		}
+		{% comment %} Modal thông báo {% endcomment %}
+		.sliding-modal-container {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+    
+        /* Modal content styles */
+        .sliding-modal-content {
+            padding: 20px;
+            margin :-100px auto;
+            border-radius:10px;
+            color:#fff;
+            width: 400px;
+            animation-name: slideIn;
+            animation-duration: 2s;
+            transition: all 2s
+        }
+    
+        /* Slide in animation */
+        @keyframes slideIn {
+            0% {
+                margin-top: -100px;
+           }
+            50%{
+              margin-top: 100px;
+            }
+            100%% {
+                margin-top: -100px;
+            }
+        }
+		      .modal1{
+            background-color:rgba(0,0,0,0.5);
+          }
+          .modal1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999; 
+            display: none; 
+          }
+          
+          .modal-content-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white; /* Modal background color */
+            padding: 20px;
+            width:60%;
+            height:800px;
+          }
+        
+          
+          .input-login{
+            width:90%;
+            margin-left:5%;
+            margin-top:10px;
+          }
+          .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            margin-top:10%;
+            padding: 5px;
+            border: 1px solid #888;
+            border-radius: 10px;
+            height:400px;
+          }
+          
+          .button-login{
+            width:90%;
+            margin-left:5%;
+            margin-top:20px;
+          }
+          .button-logout{
+            text-decoration: none;
+          }
+          .room-item{
+            position: relative;
+          }
+          .dark-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius:10px;
+        }
+        .baritem{
+          position: absolute;
+          width:184px;
+          height:5px;
+          top:49%;
+          background-color:#fff;
+          border-radius:10px;
+        }
+        .reservation-info{
+          width:100%;
+          height:100%;
+          display:flex;
+          margin-top:15px;
+        }
+       .reservation-room-info,.reservation-user-info{
+        width:50%;
+        height:100%;
+       }
+     
+       .show-image-room{
+        width:100%;
+        height:40%;
+       }
+       .table{
+        text-align:left;
+        margin-top:20px;
+       }
+       .form-reservation{
+        width:90%;
+        margin-left:5%;
+        height:100%;
+        text-align:left;
+       }
+       .input-reservation{
+        width:100%;
+        height:40px;
+        border:none;
+        outline:none;
+        background-color:#93beff;
+        border-radius:10px;
+        margin-bottom:10px;
+        text-align:center;
+       }
+       .info-user{
+        width:90%;
+        margin-left:5%;
+        height:20%;
+        margin-bottom:20px;
+        background-color:#93beff;
+        border-radius:10px;
+       }
+       .view-category{
+        transition:all 0.5s;
+        width:200px;
+       }
+       .calendar {
+        border-collapse: collapse;
+        width: 300px;
+    }
+    .calendar th, .calendar td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    .calendar th {
+        background-color: #f2f2f2;
+    }
+    .calendar td {
+        cursor: pointer;
+    }
+    .calendar td:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #0056b3;
+    }
+    .highlighted {
+      background-color: red; /* hoặc màu sắc khác tuỳ bạn chọn */
+      color: white; /* màu chữ */
+  }
+  .highlighted1 {
+    background-color: green; /* hoặc màu sắc khác tuỳ bạn chọn */
+    color: white; /* màu chữ */
+}
+	</style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'homeUser' %}">Hotel<span>project</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+		  {% if request.user.id %}
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="{% url 'homeUser' %}" class="nav-link">Trang chủ</a></li>
+	          <li class="nav-item"><a href="{% url 'roombooking' %}" class="nav-link">Phòng của bạn</a></li>
+	          <li class="nav-item"><a href="{% url 'profileUser' %}" class="nav-link">{{request.user}}</a></li>
+	          <li class="nav-item"><a href="{% url 'logoutUser' %}" class="nav-link" >Đăng xuất</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" >Đăng kí</a></li>
+	        </ul>
+	      </div>
+		  {% else %}
+		  <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="{% url 'homeUser' %}" class="nav-link">Trang chủ</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link" id="loginLink">Đăng nhập</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" >Đăng kí</a></li>
+			  {% comment %} Modal login {% endcomment %}
+			  <div class="modal" id="loginModal">
+				<div style= "width:50%"  class="modal-content">
+					<div class="formlogin">
+						<div class="divform">
+							<form action="{% url 'loginUser' %}"  method="post">
+								{%csrf_token%}
+									<div class="form-group" >
+										<p style="font-size: 40px;font-weight: 700;margin-left:30%" >ĐĂNG NHẬP</p>
+										<label style="margin-left:5%" for="exampleInputEmail1">Tên tài khoản</label>
+										<input type="text" name="email" class="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your ">		
+									</div>
+									<div class="form-group">
+										<label style="margin-left:5%" for="exampleInputPassword1">Mật khẩu</label>
+										<input type="password" name="password" class="form-control input-login" id="exampleInputPassword1" placeholder="Password">
+                    {% if messages %}
+                        {% for message in messages %}
+                                    <p style="margin-left:20px;">{{ message }}</p>
+                        {% endfor %}
+                      {% endif %}
+									</div>
+								<button type="submit" class="btn btn-primary button-login">Đăng nhập</button>
+                <li class="nav-item"><a href="#" class="nav-link" >Đăng kí</a></li>
+							</form>
+							<p style="margin-left:5%;margin-top:10px">Nếu bạn chưa có tài khoản ? <a href="#">Đăng kí</a></p>
+						</div>
+							<div class="image-login">
+							<img src="{% static 'images/testimony-img.jpg' %}" class="d-block w-100" alt="..." height = "100%">
+						</div> 
+					</div>
+				</div>
+			</div>
+			{% comment %} Modal login {% endcomment %}
+	        </ul>
+	      </div>
+		  {% endif %}
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero">
+	    <section class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image:url({% static 'images/bg_1.jpg' %});">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>More than a hotel... an experience</h2>
+		            <h1 class="mb-3">Hotel for the whole family, all year round.</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image:url({% static 'images/bg_2.jpg' %});">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>Harbor Lights Hotel &amp; Resort</h2>
+		            <h1 class="mb-3">It feels like staying in your own home.</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+	    </section>
+	  </div>
+
+    <section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container">
+    		<div class="row no-gutters">
+    			<div class="col-lg-12">
+    				<form action="{% url 'searchroom' %}" class="booking-form aside-stretch" method="post"  id="search_form"> 
+              {% csrf_token %}
+	        		<div class="row">
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-end">
+	        					<div class="wrap align-self-stretch py-3 px-4">
+				    					<label for="#">Ngày nhận phòng</label>
+				    					<input type="text" class="form-control checkin_date" placeholder="Ngày nhận phòng" name="check_in" id="check_in_search" autocomplete = "off" >
+			    					</div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-end">
+	        					<div class="wrap align-self-stretch py-3 px-4">
+				    					<label for="#">Ngày trả phòng</label>
+				    					<input type="text" class="form-control checkout_date" placeholder="Ngày trả phòng" name="check_out" id="check_out_search" autocomplete = "off">
+			    					</div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-end">
+	        					<div class="wrap align-self-stretch py-3 px-4">
+			      					<label for="#">Loại phòng</label>
+			      					<div class="form-field">
+			        					<div class="select-wrap">
+			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+			                    <select name="roomtype" class="form-control">
+                          {% for rt in roomtype%}
+                                    <option value="{{rt}}">{{rt}}</option>
+                          {% endfor %}
+			                    </select>
+			                  </div>
+				              </div>
+				            </div>
+		              </div>
+	        			</div>
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-end">
+	        					<div class="wrap align-self-stretch py-3 px-4">
+			      					<label for="#">Địa điểm</label>
+			      					<div class="form-field">
+			        					<div class="select-wrap">
+			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+			                    <select name="location"  class="form-control">			                    
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Hải Phòng">Hải Phòng</option>
+                            <option value="Cần Thơ">Cần Thơ</option>
+                            <option value="An Giang">An Giang</option>
+                            <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                            <option value="Bắc Giang">Bắc Giang</option>
+                            <option value="Bắc Kạn">Bắc Kạn</option>
+                            <option value="Bạc Liêu">Bạc Liêu</option>
+                            <option value="Bắc Ninh">Bắc Ninh</option>
+                            <option value="Bến Tre">Bến Tre</option>
+                            <option value="Bình Định">Bình Định</option>
+                            <option value="Bình Dương">Bình Dương</option>
+                            <option value="Bình Phước">Bình Phước</option>
+                            <option value="Bình Thuận">Bình Thuận</option>
+                            <option value="Cà Mau">Cà Mau</option>
+                            <option value="Cao Bằng">Cao Bằng</option>
+                            <option value="Đắk Lắk">Đắk Lắk</option>
+                            <option value="Đắk Nông">Đắk Nông</option>
+                            <option value="Điện Biên">Điện Biên</option>
+                            <option value="Đồng Nai">Đồng Nai</option>
+                            <option value="Đồng Tháp">Đồng Tháp</option>
+                            <option value="Gia Lai">Gia Lai</option>
+                            <option value="Hà Giang">Hà Giang</option>
+                            <option value="Hà Nam">Hà Nam</option>
+                            <option value="Hà Tĩnh">Hà Tĩnh</option>
+                            <option value="Hải Dương">Hải Dương</option>
+                            <option value="Hậu Giang">Hậu Giang</option>
+                            <option value="Hòa Bình">Hòa Bình</option>
+                            <option value="Hưng Yên">Hưng Yên</option>
+                            <option value="Khánh Hòa">Khánh Hòa</option>
+                            <option value="Kiên Giang">Kiên Giang</option>
+                            <option value="Kon Tum">Kon Tum</option>
+                            <option value="Lai Châu">Lai Châu</option>
+                            <option value="Lâm Đồng">Lâm Đồng</option>
+                            <option value="Lạng Sơn">Lạng Sơn</option>
+                            <option value="Lào Cai">Lào Cai</option>
+                            <option value="Long An">Long An</option>
+                            <option value="Nam Định">Nam Định</option>
+                            <option value="Nghệ An">Nghệ An</option>
+                            <option value="Ninh Bình">Ninh Bình</option>
+                            <option value="Ninh Thuận">Ninh Thuận</option>
+                            <option value="Phú Thọ">Phú Thọ</option>
+                            <option value="Quảng Bình">Quảng Bình</option>
+                            <option value="Quảng Nam">Quảng Nam</option>
+                            <option value="Quảng Ngãi">Quảng Ngãi</option>
+                            <option value="Quảng Ninh">Quảng Ninh</option>
+                            <option value="Quảng Trị">Quảng Trị</option>
+                            <option value="Sóc Trăng">Sóc Trăng</option>
+                            <option value="Sơn La">Sơn La</option>
+                            <option value="Tây Ninh">Tây Ninh</option>
+                            <option value="Thái Bình">Thái Bình</option>
+                            <option value="Thái Nguyên">Thái Nguyên</option>
+                            <option value="Thanh Hóa">Thanh Hóa</option>
+                            <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                            <option value="Tiền Giang">Tiền Giang</option>
+                            <option value="Trà Vinh">Trà Vinh</option>
+                            <option value="Tuyên Quang">Tuyên Quang</option>
+                            <option value="Vĩnh Long">Vĩnh Long</option>
+                            <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                            <option value="Yên Bái">Yên Bái</option>
+			                    </select>
+			                  </div>
+				              </div>
+				            </div>
+		              </div>
+	        			</div>
+	        			<div class="col-md d-flex">
+	        				<div class="form-group d-flex align-self-stretch">
+			              <button type="submit" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span>Tìm kiếm </span></button>
+			            </div>
+	        			</div>
+	        		</div>
+	        	</form>
+	    		</div>
+    		</div>
+    	</div>
+    </section>
+
+    <div class="collapse" id="collapseExample" >
+      <div class="card card-body" >
+        <p id="announceSearch" style="margin:auto;"></p>
+      </div>
+    </div>
+		<section class="ftco-section">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Chào mừng đến với Hotelproject</span>
+            <h2 class="mb-4">Các loại phòng</h2>
+          </div>
+        </div>  
+        <div class="row d-flex">        
+			{% for rt in roomtype %}
+			<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services py-4 d-block text-center">
+				<div class="d-flex justify-content-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="flaticon-spa"></span>
+					</div>
+				</div>
+				<div class="media-body">
+					<h3 class="heading mb-3">{{rt}}</h3>
+				</div>
+				</div>      
+			</div>     
+			{% endfor %}     
+        </div>
+      </div>
+    </section>
+
+	{% for rt in roomtype %}
+		{% if not forloop.counter|divisibleby:"2" %}
+			<section class="ftco-section ftco-wrap-about ftco-no-pt ftco-no-pb">
+				<div class="container">
+					<div class="row no-gutters">
+						<div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
+							<div class="heading-section mb-4 my-5 my-md-0">
+								<span class="subheading">Tâm điểm loại phòng</span>
+								<h2 class="mb-4">{{ rt }}</h2>
+							</div>
+							<p>{{ rt.description_room_type }}</p>
+							<p><a href="{% url 'roomtypeUser' roomtype=rt.id %}" class="btn btn-secondary rounded">Khám phá</a></p>
+						</div>
+						<div class="col-md-7 order-md-last d-flex">
+							<div class="img img-1 mr-md-2 ftco-animate" style="background-image: url({% static 'images/testimony-img.jpg' %});"></div>
+							<div class="img img-2 ml-md-2 ftco-animate" style="background-image: url({% static 'images/testimony-img.jpg' %});"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		{% else %}
+			<section class="testimony-section">
+				<div class="container">
+				<div class="row no-gutters ftco-animate justify-content-center">
+					<div class="col-md-5 d-flex">
+						<div class="testimony-img aside-stretch-2" style="background-image: url({% static 'image/slide4.jpg' %});"></div>
+					</div>
+					<div class="col-md-7 py-5 pl-md-5">
+						<div class="py-md-5">
+							<div class="heading-section ftco-animate mb-4">
+								<span class="subheading">Tâm điểm loại phòng</span>
+								<h2 class="mb-0">{{rt}}</h2>
+							</div>
+						<div class="carousel-testimony owl-carousel ftco-animate">
+							<div class="item">
+								<div class="testimony-wrap pb-4">
+									<div class="text">
+										<p class="mb-4">{{ rt.description_room_type }}</p>
+									</div>
+									<div class="d-flex">
+										<div class="user-img" style="background-image: url(images/person_1.jpg)">
+										</div>
+											<div class="pos ml-3">
+												<p><a href="{% url 'roomtypeUser' roomtype=rt.id %}" class="btn btn-secondary rounded">Khám phá</a></p>
+											</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				</div>
+			</section>
+		 {% endif %}
+	{% endfor %}
+	
+			
+    <section class="ftco-section ftco-no-pb ftco-room">
+    	<div class="container-fluid px-0">
+    		<div class="row no-gutters justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Hotelproject room</span>
+            <h2 class="mb-4">Phòng</h2>
+          </div>
+        </div>  
+    		<div class="row no-gutters">
+				{% for rm in rooms%}
+					{% if forloop.counter0|divisibleby:"2" %}
+						<div class="col-lg-6">
+							<div class="room-wrap d-md-flex ftco-animate">
+								<img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:50%;border-radius:5px">
+								<div class="half left-arrow d-flex align-items-center">
+									<div class="text p-4 text-center">
+										<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+										<p class="mb-0"><span class="price mr-1">{{rm.price}} vnđ</span> <span class="per">/ 1 day</span></p>
+										<h3 class="mb-3"><a href="#">{{rm.room_type}}</a></h3>
+										<p class="pt-1"><button  type="button" class="btn-custom px-3 py-2 rounded button-view" data-modal-target="myModal{{rm.id}}">Thông tin chi tiết <span class="icon-long-arrow-right"></span></button></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					{%  else  %}
+					<div class="col-lg-6">
+						<div class="room-wrap d-md-flex ftco-animate">
+							<img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:50%;border-radius:5px">
+							<div class="half right-arrow d-flex align-items-center">
+								<div class="text p-4 text-center">
+									<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+									<p class="mb-0"><span class="price mr-1">{{rm.price}} vnđ</span> <span class="per">1 day</span></p>
+									<h3 class="mb-3"><a href="#">{{rm.room_type}}</a></h3>
+									<p class="pt-1"><button type="button" class="btn-custom px-3 py-2 rounded button-view" data-modal-target="myModal{{rm.id}}">Thông tin chi tiết <span class="icon-long-arrow-right"></span></button></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					{% endif %}
+					<div class="modal1" id="myModal{{rm.id}}">
+						<div class="modal-content-1" id ="modal-content-myModal{{ rm.id }}" >
+							<div style="font-size:40px;font-weight:700" class="modal-body">
+								Thông tin đặt phòng
+							</div>
+							<div class="reservation-info">
+								<div class = "reservation-room-info">
+								  <div style="position:relative" class="show-image-room">
+									<img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:100%;border-radius:5px">
+									<p style="position:absolute;bottom:-15px;color:#fff;background-color:rgba(0,0,0,0.8);box-shadow:0 0 10px #fff;text-shadow:0 0 10px #fff
+									;border-radius:0 0 5px 5px;"><i><small> {{rm.description}} </small></i> </p>
+								  </div>
+								  <table  style="text-align:left;margin-top:20px;" class="table">
+									<thead>
+									  <tr>
+   
+										<th >Loại phòng</th>
+										<th >Tên khách sạn</th>
+										<th >Địa chỉ</th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td>{{ rm.room_type }}</td>
+										<td>{{ rm.hotel.name}}</td>
+										<td>{{ rm.hotel.location}} -{{ rm.hotel.country}} </td>
+									  </tr>
+									</tbody>
+								  </table>
+
+								  <table style="text-align:left;margin-top:20px;" class="table">
+									<thead>
+									  <tr>
+										<th >Giường</th>
+										<th >Diện tích</th>
+										
+										<th >Số phòng</th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td>{{ rm.capacity }}</td>
+										<td>{{ rm.size}}</td>
+										<td>{{ rm.roomnumber}}</td>
+									  </tr>
+									</tbody>
+								  </table>
+								  <div class="d-grid gap-2">
+								
+									<button class="btn btn-primary" type="button">Giá : {{rm.price}} VNĐ</button>
+								  </div>
+								 
+									  
+								</div>
+								<div class = "reservation-user-info">
+								  <form class="form-reservation" action="{% url 'userreservation' %}" method="post" onsubmit="return validateDate({{rm.id}});"> 
+									  {% csrf_token %}
+									  <input type="hidden" value="{{ rm.id }}" name="room_id"></input>
+									  <input type="hidden" value="{{ request.user.id }}" name="guest_id"></input>
+									  <div id="calendarHeader{{rm.id}}"></div>
+									  <div id="calendarContainer{{rm.id}}"></div>
+									  <button class="button" onclick="previousMonth('{{ rm.id }}')">Tháng trước</button>
+									  <button class="button" onclick="nextMonth('{{ rm.id }}')">Tháng sau</button>
+									  <p>Ngày lấy phòng :</p>
+									  <input class="form-control" type="date" name="check_in" id="check_in{{rm.id}}" data-modal-id="{{ rm.id }}" required>
+									  <p>Ngày trả phòng :</p>
+									  <input class="form-control" type="date" name="check_out" id="check_out{{rm.id}}" data-modal-id="{{ rm.id }}" required>
+									  <button style="margin-top:18px;width:100%" class="btn btn-primary" type="submit">Đặt phòng</button>
+									  
+								</form>
+								
+								</div>
+							</div>
+
+						</div>
+					
+				</div>
+
+    			{% endfor %}
+    		</div>
+    	</div>
+    </section>
+	<section class="instagram">
+      <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Photos</span>
+            <h2><span>Instagram</span></h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-1.jpg" class="insta-img image-popup" style="background-image: url({% static 'images/insta-1.jpg' %});">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-2.jpg" class="insta-img image-popup" style="background-image: url({% static 'images/insta-2.jpg' %});">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-3.jpg" class="insta-img image-popup" style="background-image: url({% static 'images/insta-3.jpg' %});">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-4.jpg" class="insta-img image-popup" style="background-image: url({% static 'images/insta-4.jpg' %});">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-5.jpg" class="insta-img image-popup" style="background-image: url({% static 'images/insta-5.jpg' %});">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url({% static 'images/bg_4.jpg' %});">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Harbor Lights</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Blog</a></li>
+                <li><a href="#" class="py-2 d-block">Rooms</a></li>
+                <li><a href="#" class="py-2 d-block">Amenities</a></li>
+                <li><a href="#" class="py-2 d-block">Gift Card</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Career</a></li>
+                <li><a href="#" class="py-2 d-block">About Us</a></li>
+                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Services</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+
+{% comment %} Mã js {% endcomment %}
+	<script>
+		var isLoggedIn = {% if user.is_authenticated %} true {% else %} false {% endif %};
+		if (!isLoggedIn)
+		{
+			var modal = document.getElementById('loginModal');
+			var loginLink = document.getElementById("loginLink");
+			loginLink.onclick = function() {
+				modal.style.display = "block";
+        localStorage.setItem('modalShown', 'true');
+			};
+			window.onload = function() {
+				window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+          localStorage.setItem('modalShown', 'false');
+				}
+				};
+			};
+		}
+        
+        var buttons = document.querySelectorAll('.button-view');
+        buttons.forEach(function(button) {
+          	button.addEventListener('click', function() {			
+                var modalId = button.getAttribute('data-modal-target');
+                var modal = document.getElementById(modalId);
+                modal.style.display = "block";
+            });
+          });
+        
+        window.onclick = function(event) {
+          var modals = document.querySelectorAll('.modal1');
+          modals.forEach(function(modal) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          });
+        };
+        var reservations = [
+        {% for rs in reservation %}
+            {
+                guest_id:{{rs.guest.id}},
+                room_id: {{ rs.room.id }},
+                check_in: '{{ rs.check_in }}',
+                check_out: '{{ rs.check_out }}'
+            },
+        {% endfor %}
+        ];
+        var userid ;
+        if (isLoggedIn)
+        {
+          userid = {{request.user.id }};
+        }
+        const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+        let modalData = {};
+        function generateCalendar(year, month, modalId) {
+          modalData[modalId] = { year: year, month: month };
+      
+          const calendarHeader = document.getElementById("calendarHeader" + modalId);
+          calendarHeader.innerHTML = "<h2>" + monthNames[month] + " " + year + "</h2>";
+      
+          const calendarContainer = document.getElementById("calendarContainer" + modalId);
+          const daysInMonth = new Date(year, month + 1, 0).getDate();
+          const firstDayOfMonth = new Date(year, month, 1).getDay() || 7;
+      
+          let calendarHTML = "<table class='calendar'>";
+          calendarHTML += "<thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody>";
+          
+          let dayCount = 1;
+          for (let i = 0; i < 6; i++) {
+              calendarHTML += "<tr>";
+              for (let j = 0; j < 7; j++) {
+                  let cellClass = "";
+                  if (i === 0 && j < firstDayOfMonth - 1) {
+                      calendarHTML += "<td></td>";
+                  } else if (dayCount > daysInMonth) {
+                      calendarHTML += "<td></td>";
+                  } else {
+                      let currentDate = new Date(year, month, dayCount);
+                      for (let i = 0; i < reservations.length; i++) {
+                        if (reservations[i].room_id == modalId) {
+                            var check_in = reservations[i].check_in;
+                            var check_out = reservations[i].check_out;
+                    
+                            if (currentDate >= new Date(check_in) && currentDate <= new Date(check_out)) {
+                              if(isLoggedIn)
+                              {
+                                if(reservations[i].guest_id == userid)
+                                {
+                                    cellClass = "highlighted1";
+                                }
+                              }
+                              else{
+                                cellClass = "highlighted";
+                              } 
+                            }
+                        }
+                    }
+                      calendarHTML += "<td class='" + cellClass + "'>" + dayCount + "</td>";
+                      dayCount++;
+                  }
+              }
+              calendarHTML += "</tr>";
+              if (dayCount > daysInMonth) {
+                  break;
+              }
+          }
+          calendarHTML += "</tbody></table>";
+          calendarContainer.innerHTML = calendarHTML;
+      }
+      function previousMonth(modalId) {
+          let { year, month } = modalData[modalId];
+          month--;
+          if (month < 0) {
+                month = 11;
+                year--;
+          }
+          generateCalendar(year, month, modalId);
+      }
+      function nextMonth(modalId) {
+          let { year, month } = modalData[modalId];
+          month++;
+          if (month > 11) {
+                month = 0;
+                year++;
+          }
+          generateCalendar(year, month, modalId);
+      }
+      {% for rm in rooms %}
+            const currentDate{{ rm.id }} = new Date();
+            const currentYear{{ rm.id }} = currentDate{{ rm.id }}.getFullYear();
+            const currentMonth{{ rm.id }} = currentDate{{ rm.id }}.getMonth();
+            generateCalendar(currentYear{{ rm.id }}, currentMonth{{ rm.id }}, "{{ rm.id }}");
+      {% endfor %}
+      
+      function validateDate(roomid) {
+        var checkInDate = new Date(document.getElementById('check_in'+roomid).value);
+        var checkOutDate = new Date(document.getElementById('check_out'+roomid).value);
+        var currentDate = new Date();
+        if (checkInDate >= checkOutDate || checkInDate <= currentDate) {
+            alert("Lỗi ngày đặt phòng. Vui lòng kiểm tra lại!");
+            return false;
+        }
+
+        for (let i = 0; i < reservations.length; i++) {
+          if (reservations[i].room_id == roomid) {
+              var check_in = reservations[i].check_in;
+              var check_out = reservations[i].check_out;
+      
+              if (checkInDate >= new Date(check_in) && checkInDate <= new Date(check_out)||
+                  checkOutDate >= new Date(check_in) && checkOutDate <= new Date(check_out)||
+                  checkInDate <= new Date(check_in) && checkOutDate >= new Date(check_out)) {
+                    alert("Phòng đã không còn lịch trống vào thời gian này.");
+                    return false;
+              }
+          }
+        }
+
+
+        return true;
+      }
+
+      document.getElementById('search_form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        var check_in_search = document.getElementById('check_in_search');
+        var check_out_search = document.getElementById('check_out_search');
+        var check_in_date = new Date(check_in_search.value);
+        var check_out_date = new Date(check_out_search.value);
+
+        if (isNaN(check_in_date.getTime()) || isNaN(check_out_date.getTime())) {
+          var announce = document.getElementById('announceSearch');
+          announce.innerText = "Vui lòng nhập đủ thông tin";
+          return;
+        }
+        else{
+          if (check_in_date >= check_out_date) {
+            var announce = document.getElementById('announceSearch');
+            announce.innerText = "Lỗi ngày tìm kiếm";
+            return;
+          }
+        }
+        this.submit();
+       
+    });
+    
+
+    
+	</script>
+
+	{% if messages %}
+      {% for message in messages %}
+          <div id="slidingMessageModal{{ forloop.counter }}" class="sliding-modal-container">
+              <div class="sliding-modal-content">
+                <div class="alert alert-success" role="alert">
+                 {{message}}
+                </div>
+              </div>
+          </div>
+      {% endfor %}
+    {% endif %}
+
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                var modal{{ forloop.counter }} = document.getElementById('slidingMessageModal{{ forloop.counter }}');
+                if (modal{{ forloop.counter }}) {
+                    modal{{ forloop.counter }}.style.display = "block";
+                    setTimeout(function(){
+                        modal{{ forloop.counter }}.style.display = "none";
+                    }, 2000);
+                }
+            {% endfor %}
+        {% endif %}
+    </script>
+    <script>
+      // Kiểm tra xem modal đã được mở trước đó hay chưa
+      document.addEventListener('DOMContentLoaded', function() {
+          var modalShown = localStorage.getItem('modalShown');
+          // Nếu modal đã được mở trước đó, mở nó
+          if (modalShown === 'true') {
+              var modal = document.getElementById('loginModal');
+              if (modal) {
+                  modal.style.display = 'block';
+              }
+          }
+      });
+
+
+
+  </script>
+  </body>
+</html>

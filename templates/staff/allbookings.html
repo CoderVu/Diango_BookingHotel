@@ -5,7 +5,7 @@
 <table class="table">
     <thead>
         <th>User</th>
-        <th>Room</th>
+        <th>Name hotel</th>
         <th>Location</th>
         <th>Person</th>
         <th>Check in</th>
@@ -16,7 +16,7 @@
     {% for each_booking in bookings %}
     <tr>
         <td>{{ each_booking.guest.username }}</td>
-        <td>{{ each_booking.room.roomnumber }}</td>
+        <td>{{ each_booking.room.hotel.name }}</td>
         <td>{{ each_booking.room.hotel.location }}</td>
         <td>{{ each_booking.room.capacity }}</td>
         <td>{{ each_booking.check_in }}</td>

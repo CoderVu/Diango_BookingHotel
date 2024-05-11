@@ -1,0 +1,673 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Harborlights - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+      
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+      <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+      {% comment %} Modal login {% endcomment %}
+      .modal{
+        background-color:rgba(0,0,0,0.5);
+        }
+        .input-login{
+      width:90%;
+      margin-left:5%;
+      margin-top:10px;
+        }
+        .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-top:10%;
+      padding: 5px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      height:400px;
+        }
+        .formlogin{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      }
+      .divform{
+        width: 50%;
+        height: 100%;
+      }
+      .image-login{
+        width: 50%;
+        height: 100%;
+      }
+      .button-login{
+        width:90%;
+        margin-left:5%;
+      }
+      {% comment %} Modal thông báo {% endcomment %}
+      .sliding-modal-container {
+              display: none;
+              position: fixed;
+              z-index: 1;
+              left: 0;
+              top: 0;
+              width: 100%;
+          }
+      
+          /* Modal content styles */
+          .sliding-modal-content {
+              background-color: #fefefe;
+              padding: 20px;
+              margin :-100px auto;
+              border-radius:10px;
+              background-color:lightgreen;
+              color:#fff;
+              width: 400px;
+              animation-name: slideIn;
+              animation-duration: 2s;
+              transition: all 2s
+          }
+      
+          /* Slide in animation */
+          @keyframes slideIn {
+              0% {
+                  margin-top: -100px;
+             }
+              50%{
+                margin-top: 100px;
+              }
+              100%% {
+                  margin-top: -100px;
+              }
+        
+          }
+          {% comment %} Roomtype css {% endcomment %}
+          .button-res{
+            border:none;
+            height:40px;
+          }
+          .button-res:hover{
+            background-color:#56f347;
+          }
+          .modal1{
+            background-color:rgba(0,0,0,0.5);
+          }
+          .modal1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999; 
+            display: none; 
+          }
+          
+          .modal-content-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white; /* Modal background color */
+            padding: 20px;
+            width:60%;
+            height:800px;
+          }
+          .reservation-info{
+            width:100%;
+            height:100%;
+            display:flex;
+            margin-top:15px;
+          }
+         .reservation-room-info,.reservation-user-info{
+          width:50%;
+          height:100%;
+         }
+       
+         .show-image-room{
+          width:100%;
+          height:40%;
+         }
+         .table{
+          text-align:left;
+          margin-top:20px;
+         }
+         .form-reservation{
+          width:90%;
+          margin-left:5%;
+          height:100%;
+          text-align:left;
+         }
+         .input-reservation{
+          width:100%;
+          height:40px;
+          border:none;
+          outline:none;
+          background-color:#93beff;
+          border-radius:10px;
+          margin-bottom:10px;
+          text-align:center;
+         }
+         .info-user{
+          width:90%;
+          margin-left:5%;
+          height:20%;
+          margin-bottom:20px;
+          background-color:#93beff;
+          border-radius:10px;
+         }
+         .view-category{
+          transition:all 0.5s;
+          width:200px;
+         }
+         .calendar {
+          border-collapse: collapse;
+          width: 300px;
+      }
+      .calendar th, .calendar td {
+          padding: 10px;
+          text-align: center;
+          border: 1px solid #ddd;
+      }
+      .calendar th {
+          background-color: #f2f2f2;
+      }
+      .calendar td {
+          cursor: pointer;
+      }
+      .calendar td:hover {
+          background-color: #f0f0f0;
+      }
+      
+      .button {
+          display: inline-block;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          background-color: #007bff;
+          color: #fff;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s;
+      }
+      .button:hover {
+          background-color: #0056b3;
+      }
+      .highlighted {
+        background-color: red; /* hoặc màu sắc khác tuỳ bạn chọn */
+        color: white; /* màu chữ */
+    }
+    .highlighted1 {
+      background-color: green; /* hoặc màu sắc khác tuỳ bạn chọn */
+      color: white; /* màu chữ */
+    }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'homeUser' %}">Hotel<span>project</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      {% if request.user.id %}
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="{% url 'homeUser' %}" class="nav-link">Trang chủ</a></li>
+	          <li class="nav-item"><a href="{% url 'roombooking' %}" class="nav-link">Phòng của bạn</a></li>
+	          <li class="nav-item"><a href="{% url 'profileUser' %}" class="nav-link">{{request.user}}</a></li>
+	          <li class="nav-item"><a href="{% url 'logoutUser' %}" class="nav-link" >Đăng xuất</a></li>
+	        </ul>
+	      </div>
+		  {% else %}
+		  <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="{% url 'homeUser' %}" class="nav-link">Trang chủ</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link" id="loginLink">Đăng nhập</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" >Đăng kí</a></li>
+			  {% comment %} Modal login {% endcomment %}
+			  <div class="modal" id="loginModal">
+				<div style= "width:50%"  class="modal-content">
+					<div class="formlogin">
+						<div class="divform">
+							<form action="{% url 'loginUser' %}"  method="post">
+								{%csrf_token%}
+									<div class="form-group" >
+										<p style="font-size: 40px;font-weight: 700;margin-left:30%" >ĐĂNG NHẬP</p>
+										<label style="margin-left:5%" for="exampleInputEmail1">Tên tài khoản</label>
+										<input type="text" name="email" class="form-control input-login" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your ">		
+									</div>
+									<div class="form-group">
+										<label style="margin-left:5%" for="exampleInputPassword1">Mật khẩu</label>
+										<input type="password" name="password" class="form-control input-login" id="exampleInputPassword1" placeholder="Password">
+									</div>
+								<button type="submit" class="btn btn-primary button-login">Đăng nhập</button>
+							</form>
+							<p style="margin-left:5%;margin-top:10px">Nếu bạn chưa có tài khoản ? <a href="#">Đăng kí</a></p>
+						</div>
+							<div class="image-login">
+							<img src="{% static 'image/slide2.jpg' %}" class="d-block w-100" alt="..." height = "100%">
+						</div> 
+					</div>
+				</div>
+			</div>
+			{% comment %} Modal login {% endcomment %}
+	        </ul>
+	      </div>
+		  {% endif %}
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url({% static 'images/bg_3.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hạng phòng</p>
+	            <h1 class="mb-4 bread">{{roomtypes}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="list-room">
+          <div class="card-group" style="display:flex;flex-wrap:wrap">
+              {% for rm in rooms %}
+                  <div class="card" style="min-width:475px;max-width:475px;margin-top:10px;">
+                      <img src="{% static "image/slide2.jpg" %}" class="card-img-top" alt="...">
+                      {% comment %} <img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:100%;"> {% endcomment %}
+                      <div class="card-body">
+                      <h5 class="card-title">{{ rm.hotel.name}}</h5>
+                      <p class="card-text">
+                          Địa chỉ :  {{ rm.hotel.location}}<br>
+                          Diện tích :  {{rm.capacity}} m²<br>
+                          Phòng : {{rm.size}} giường ngủ<br>
+                          Số phòng : {{rm.roomnumber}}<br>
+                          Giá : {{rm.price}} $<br>
+                       </p>
+                      </div>
+                      <button class="button-res button-view" type="button" data-modal-target="myModal{{ rm.id }}">Đặt phòng</button>
+                  </div>
+                  <div class="modal1" id="myModal{{ rm.id }}">
+                    <div class="modal-content-1" id ="modal-content-myModal{{ rm.id }}" >
+                        <div style="font-size:40px;font-weight:700" class="modal-body">
+                            Thông tin đặt phòng
+                        </div>
+                        <div class="reservation-info">
+                            <div class = "reservation-room-info">
+                              <div style="position:relative" class="show-image-room">
+                                <img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:100%;border-radius:5px">
+                                <p style="position:absolute;bottom:-15px;color:#fff;background-color:rgba(0,0,0,0.8);box-shadow:0 0 10px #fff;text-shadow:0 0 10px #fff
+                                ;border-radius:0 0 5px 5px;"><i><small> {{rm.description}} </small></i> </p>
+                              </div>
+                              <table  style="text-align:left;margin-top:20px;" class="table">
+                                <thead>
+                                  <tr>
+
+                                    <th >Loại phòng</th>
+                                    <th >Tên khách sạn</th>
+                                    <th >Địa chỉ</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>{{ rm.room_type.type_names }}</td>
+                                    <td>{{ rm.hotel.name}}</td>
+                                    <td>{{ rm.hotel.location}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <table style="text-align:left;margin-top:20px;" class="table">
+                                <thead>
+                                  <tr>
+                                    <th >Giường</th>
+                                    <th >Diện tích</th>
+                                    
+                                    <th >Số phòng</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>{{ rm.capacity }}</td>
+                                    <td>{{ rm.size}}</td>
+                                    <td>{{ rm.roomnumber}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <div class="d-grid gap-2">
+                            
+                                <button class="btn btn-primary" type="button">Giá : {{rm.price}} VNĐ</button>
+                              </div>
+                             
+                                  
+                            </div>
+                            <div class = "reservation-user-info">
+                              
+                              <form class="form-reservation" action="{% url 'userreservation' %}" method="post" onsubmit="return validateDate({{rm.id}});"> 
+                                  {% csrf_token %}
+                                  <input type="hidden" value="{{ rm.id }}" name="room_id"></input>
+                                  <input type="hidden" value="{{ request.user.id }}" name="guest_id"></input>
+                                  <div id="calendarHeader{{rm.id}}"></div>
+                                  <div id="calendarContainer{{rm.id}}"></div>
+                                  <button class="button" onclick="previousMonth('{{ rm.id }}')">Tháng trước</button>
+                                  <button class="button" onclick="nextMonth('{{ rm.id }}')">Tháng sau</button>
+                                  <p>Ngày lấy phòng :</p>
+                                  <input class="form-control" type="date" name="check_in" id="check_in{{rm.id}}" data-modal-id="{{ rm.id }}" required>
+                                  <p>Ngày trả phòng :</p>
+                                  <input class="form-control" type="date" name="check_out" id="check_out{{rm.id}}" data-modal-id="{{ rm.id }}" required>
+                                  <button style="margin-top:18px;width:100%" class="btn btn-primary" type="submit">Đặt phòng</button>
+                                  
+                            </form>
+                            
+                            </div>
+                        </div>
+
+                    </div>
+                
+            </div>
+              {% endfor %}
+              
+            </div>
+      </div>
+
+
+  </div>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Harbor Lights</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Blog</a></li>
+                <li><a href="#" class="py-2 d-block">Rooms</a></li>
+                <li><a href="#" class="py-2 d-block">Amenities</a></li>
+                <li><a href="#" class="py-2 d-block">Gift Card</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Career</a></li>
+                <li><a href="#" class="py-2 d-block">About Us</a></li>
+                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Services</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+{% comment %} Mã js {% endcomment %}
+<script>
+  var isLoggedIn = {% if user.is_authenticated %} true {% else %} false {% endif %};
+    console.log(isLoggedIn);
+  
+    if (!isLoggedIn) {
+      var modal = document.getElementById('loginModal');
+      var loginLink = document.getElementById("loginLink");
+      loginLink.onclick = function() {
+          modal.style.display = "block";
+      };
+      window.onload = function() {
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+      };
+    }
+  var buttons = document.querySelectorAll('.button-view');
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        if (isLoggedIn) {
+            var modalId = button.getAttribute('data-modal-target');
+            var modal = document.getElementById(modalId);
+            modal.style.display = "block";
+        } else {
+            Swal.fire({
+              title: 'Thông báo',
+              text: 'Vui lòng đăng nhập!',
+              icon: 'warning'
+        });
+        }
+      });
+    });
+    window.onclick = function(event) {
+      var modals = document.querySelectorAll('.modal1');
+      modals.forEach(function(modal) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
+
+  var reservations = [
+  {% for rs in reservation %}
+      {
+          guest_id:{{rs.guest.id}},
+          room_id: {{ rs.room.id }},
+          check_in: '{{ rs.check_in }}',
+          check_out: '{{ rs.check_out }}'
+      },
+  {% endfor %}
+  ];
+  var userid = {{request.user.id }}
+  console.log(userid)
+  const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  let modalData = {};
+  function generateCalendar(year, month, modalId) {
+    modalData[modalId] = { year: year, month: month };
+
+    const calendarHeader = document.getElementById("calendarHeader" + modalId);
+    calendarHeader.innerHTML = "<h2>" + monthNames[month] + " " + year + "</h2>";
+
+    const calendarContainer = document.getElementById("calendarContainer" + modalId);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfMonth = new Date(year, month, 1).getDay() || 7;
+
+    let calendarHTML = "<table class='calendar'>";
+    calendarHTML += "<thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody>";
+
+    let dayCount = 1;
+    for (let i = 0; i < 6; i++) {
+        calendarHTML += "<tr>";
+        for (let j = 0; j < 7; j++) {
+            let cellClass = "";
+            if (i === 0 && j < firstDayOfMonth - 1) {
+                calendarHTML += "<td></td>";
+            } else if (dayCount > daysInMonth) {
+                calendarHTML += "<td></td>";
+            } else {
+                let currentDate = new Date(year, month, dayCount);
+                for (let i = 0; i < reservations.length; i++) {
+                  if (reservations[i].room_id == modalId) {
+                      var check_in = reservations[i].check_in;
+                      var check_out = reservations[i].check_out;
+              
+                      if (currentDate >= new Date(check_in) && currentDate <= new Date(check_out)) {
+                        if(reservations[i].guest_id == userid)
+                        {
+                            cellClass = "highlighted1";
+                        }
+                        else{
+                          cellClass = "highlighted";
+                        } 
+                      }
+                  }
+              }
+                calendarHTML += "<td class='" + cellClass + "'>" + dayCount + "</td>";
+                dayCount++;
+            }
+        }
+        calendarHTML += "</tr>";
+        if (dayCount > daysInMonth) {
+            break;
+        }
+    }
+    calendarHTML += "</tbody></table>";
+    calendarContainer.innerHTML = calendarHTML;
+}
+function previousMonth(modalId) {
+    let { year, month } = modalData[modalId];
+    month--;
+    if (month < 0) {
+          month = 11;
+          year--;
+    }
+    generateCalendar(year, month, modalId);
+}
+function nextMonth(modalId) {
+    let { year, month } = modalData[modalId];
+    month++;
+    if (month > 11) {
+          month = 0;
+          year++;
+    }
+    generateCalendar(year, month, modalId);
+}
+{% for rm in rooms %}
+      const currentDate{{ rm.id }} = new Date();
+      const currentYear{{ rm.id }} = currentDate{{ rm.id }}.getFullYear();
+      const currentMonth{{ rm.id }} = currentDate{{ rm.id }}.getMonth();
+      generateCalendar(currentYear{{ rm.id }}, currentMonth{{ rm.id }}, "{{ rm.id }}");
+{% endfor %}
+
+function validateDate(roomid) {
+  var checkInDate = new Date(document.getElementById('check_in'+roomid).value);
+  var checkOutDate = new Date(document.getElementById('check_out'+roomid).value);
+  var currentDate = new Date();
+  // Kiểm tra ngày đặt phải sau ngày hiện tại và trước ngày trả phòng
+  if (checkInDate >= checkOutDate || checkInDate <= currentDate) {
+      alert("Lỗi ngày đặt phòng. Vui lòng kiểm tra lại!");
+      return false;
+  }
+
+  for (let i = 0; i < reservations.length; i++) {
+    if (reservations[i].room_id == roomid) {
+        var check_in = reservations[i].check_in;
+        var check_out = reservations[i].check_out;
+
+        if (checkInDate >= new Date(check_in) && checkInDate <= new Date(check_out)||
+            checkOutDate >= new Date(check_in) && checkOutDate <= new Date(check_out)||
+            checkInDate <= new Date(check_in) && checkOutDate >= new Date(check_out)) {
+              alert("Phòng đã không còn lịch trống vào thời gian này.");
+              return false;
+        }
+    }
+  }
+
+
+  return true;
+}
+
+</script>
+{% comment %} Thông báo {% endcomment %}
+{% if messages %}
+    {% for message in messages %}
+        <div id="slidingMessageModal{{ forloop.counter }}" class="sliding-modal-container">
+            <div class="sliding-modal-content">
+                <p>{{ message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+  {% endif %}
+
+  <script>
+      {% if messages %}
+          {% for message in messages %}
+              var modal{{ forloop.counter }} = document.getElementById('slidingMessageModal{{ forloop.counter }}');
+              if (modal{{ forloop.counter }}) {
+                  modal{{ forloop.counter }}.style.display = "block";
+                  setTimeout(function(){
+                      modal{{ forloop.counter }}.style.display = "none";
+                  }, 2000);
+              }
+          {% endfor %}
+      {% endif %}
+  </script>
+  </body>
+</html>

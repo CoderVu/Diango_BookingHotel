@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path
 import krishna.views as views
 urlpatterns = [
-    path('', views.homepage, name="homepage"),
+    path('', views.Home,name='homeUser'),
+    # Admin views
     path('about', views.aboutpage,name="aboutpage"),
     path('contact', views.contactpage,name="contactpage"),
     path('staff/', views.staff_log_sign_page,name="staff_log_sign_page"),
     path('staff/login', views.staff_log_sign_page,name="staffloginpage"),
     path('staff/signup', views.staff_sign_up,name="staffsignup"),
-    path('logout', views.logoutuser,name="logout"),
+   
     path('staff/panel', views.panel,name="staffpanel"),
     path('staff/allbookings', views.all_bookings,name="allbookigs"),
     path('booking/cancel/<int:booking_id>/', views.cancel_booking, name='cancel_booking'),
@@ -40,8 +41,19 @@ urlpatterns = [
     path('staff/panel/all_users/lock-account/', views.lock_account, name='lock_account'),
     path('staff/panel/all_users/unlock-account/', views.unlock_account, name='unlock_account'),
     path('staff/panel/all_user/search_users/', views.search_users, name='search_users'),
-
     path('admin/', admin.site.urls),
+    
+    # User views
+    path('login', views.Userlogin,name='loginUser'),
+    path('logout', views.Userlogout,name='logoutUser'),
+    path('roomtype/<str:roomtype>/', views.RoomTypePage,name='roomtypeUser'),
+    path('reservation', views.AddReservation,name='userreservation'),
+    path('roomsearch', views.SearchRoom,name='searchroom'),
+    path('roombooking', views.RoomBooking,name='roombooking'),
+    path('cancelroom/<int:rsId>/', views.CancelReservation,name='cancelroomUser'),
+    path('profile', views.Profile,name='profileUser'),
+    path('updateprofile', views.UpdateProfile,name='updateprofileUser'),
+    path('updateavata', views.UploadAvata,name='updateavataUser'),
     
     
 

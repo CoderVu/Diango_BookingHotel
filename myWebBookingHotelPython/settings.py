@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cafusabcdefghiacfdeysaczdsfoapqwsbbbbbbbbbbbsaaaaaaaaaaa' 
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,7 +60,7 @@ DATABASES = {
         "NAME": "python_web_booking",
         "USER": "root",
         "PASSWORD": "123456789",
-        "HOST": "127.0.0.1"
+        "HOST": "LOCALHOST"
         # pass wifi là 22222222
     }
 }
