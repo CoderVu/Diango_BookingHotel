@@ -24,10 +24,11 @@
         <td>{{ each_booking.room.price }}</td>
         <td>
          
-            <form action="/booking/cancel/{{ each_booking.id }}" method="POST">
+            <form action="/booking/cancel/{{ each_booking.id }}/" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
             </form>
+            
         </td>
     </tr>
     {% endfor %}

@@ -372,7 +372,7 @@ def SearchRoom(request):
         available_rooms = rooms_in_location.exclude(id__in=[room.id for room in reserved_rooms])
         
      
-        return render(request,'roomSearch.html', {'room': available_rooms,'reservation':reservation,'checkin':checkin,'checkout':checkout})
+        return render(request,'user/roomSearch.html', {'room': available_rooms,'reservation':reservation,'checkin':checkin,'checkout':checkout})
 def RoomTypePage(request,roomtype):
     if request.method == 'GET':
         roomtypes = RoomType.objects.get(id=roomtype)
@@ -506,7 +506,7 @@ def SearchRoom(request):
         
         available_rooms = rooms_in_location.exclude(id__in=[room.id for room in reserved_rooms])
         
-        return render(request,'roomSearch.html', {'room': available_rooms,'reservation':reservation,'checkin':checkin,'checkout':checkout})
+        return render(request,'user/roomSearch.html', {'room': available_rooms,'reservation':reservation,'checkin':checkin,'checkout':checkout})
     
 
 def RoomBooking(request):
@@ -529,7 +529,7 @@ def Profile(request):
             userprofile = profile
             break
     roomUser = Reservation.objects.filter(guest_id=request.user.id).order_by('check_in')
-    return render(request, 'profileUser.html', {'userprofile': userprofile, 'roomUser': roomUser})
+    return render(request, 'user/profileUser.html', {'userprofile': userprofile, 'roomUser': roomUser})
 
 def UpdateProfile(request):
     if request.method == 'POST':

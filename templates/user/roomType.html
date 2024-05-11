@@ -296,8 +296,8 @@
           <div class="card-group" style="display:flex;flex-wrap:wrap">
               {% for rm in rooms %}
                   <div class="card" style="min-width:475px;max-width:475px;margin-top:10px;">
-                      <img src="{% static "image/slide2.jpg" %}" class="card-img-top" alt="...">
-                      {% comment %} <img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:100%;"> {% endcomment %}
+                      {% comment %} <img src="{% static "image/slide2.jpg" %}" class="card-img-top" alt="..."> {% endcomment %}
+                      <img src="data:image/jpeg;base64,{{ rm.image }}" class="img-fluid rounded-start" style="height:100%; width:100%;">
                       <div class="card-body">
                       <h5 class="card-title">{{ rm.hotel.name}}</h5>
                       <p class="card-text">
